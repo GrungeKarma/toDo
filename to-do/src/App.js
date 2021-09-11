@@ -6,11 +6,11 @@ function App() {
   //button submit task and put into list of tasks
   const [taskList, setTaskList] = useState([]);
   const [inputTask, setInputTask] = useState('');
-  console.log(taskList);
+  //console.log(taskList);
 
   function handleSubmit(e) {
     e.preventDefault();
-
+    console.log(e);
     const newTask = [
       ...taskList,
       {
@@ -21,6 +21,7 @@ function App() {
     ]
     setTaskList(newTask);
     setInputTask('');
+
   }
 
   const toggleCompleted = (clickedTaskId) => {
@@ -48,27 +49,40 @@ function App() {
 
   return (
     <div className="App">
+      <h1 id='title'>To Do</h1>
       <main className="App-main">
+
         <form>
           <input
+            id="input"
             type='text'
             placeholder='name task here'
             onChange={(e) => setInputTask(e.target.value)}
             value={inputTask}
+            required
           />
           <button
+            id="submit"
             onClick={handleSubmit}
+
           >submit</button>
         </form>
 
         {
           taskList.map(task => {
+
+            if (task.taskName === '') {
+              return null;
+            };
             return (
               <button
+                id="submit"
                 key={task.id}
                 onClick={() => toggleCompleted(task.id)}
                 className={`task${task.completed === true ? ' completed' : ''}`}
-              >{task.taskName}</button>
+              >
+                {task.taskName}
+              </button>
             )
           })
         }
