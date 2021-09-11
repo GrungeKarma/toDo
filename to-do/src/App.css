@@ -5,15 +5,21 @@
   font-size: x-large;
 }
 
-main {
+.App {
+  text-align: center;
+}
+
+.App-main {
+  background-color: #282c34;
+  min-height: 100vh;
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
 }
-h1 {
-  font-size: 100px;
-}
+
 .task {
   text-decoration: none;
   cursor: pointer;
